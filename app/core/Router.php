@@ -5,7 +5,6 @@ namespace framework;
 
 
 class Router {
-
     protected static $routes = [];
     protected static $route = [];
 
@@ -19,5 +18,23 @@ class Router {
 
     public static function getRoute() {
         return self::$route;
+    }
+
+    public static function dispatch($url) {
+        if (self::matchRoute($url)) {
+            echo 'OK';
+        } else {
+            echo 'NO';
+        }
+    }
+
+    public static function matchRoute($url) {
+        foreach (self::$routes as $pattern => $route) {
+            if (preg_match("#($pattern)#", $url, $matches)) {
+                debug($matches);
+                return true;
+            }
+        }
+        return false;
     }
 }
