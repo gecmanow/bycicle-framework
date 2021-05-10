@@ -13,7 +13,7 @@ abstract class Controller {
     public $prefix;
     public $layout;
     public $data = [];
-    public $meta = [];
+    public $meta = ['title' => '', 'desc' => '', 'keywords' => ''];
 
     // controller и model получаем из $route['controller'], так как имя модели совпадает с именем контроллера
     public function __construct($route) {
